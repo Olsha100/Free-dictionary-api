@@ -1,9 +1,236 @@
-.search-box {
-  &__input {
-    color: black;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+$base-color: #ff5218d0;
+$font: 'Montserrat', sans-serif;
+
+$h1-font-size: 1.15rem;
+$h2-font-size: $h1-font-size * 0.95;
+$h3-font-size: $h1-font-size * 0.9;
+$p-font-size: $h1-font-size * 0.75;
+
+%flex-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+*,
+*::before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font;
+  color: $base-color;
+  overflow-y: hidden;
+}
+
+.main-container {
+  @extend %flex-box;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle at bottom left,
+    rgba(255, 255, 255, 1) 84.9%,
+    $base-color 85%
+  );
+
+  .search-container {
+    @extend %flex-box;
+    width: 100%;
+    h1 {
+      font-size: $h1-font-size;
+      text-align: center;
+    }
+    .search-box {
+      @extend %flex-box;
+      flex-direction: row;
+      justify-content: normal;
+      margin: 0 1rem;
+      width: 100%;
+      max-width: 24.625rem;
+      &__input {
+        flex-basis: 100%;
+        color: $base-color;
+        font-size: $p-font-size;
+        max-width: 37rem;
+        height: 2rem;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid $base-color;
+        margin: 1rem 0.2rem 1rem 0;
+      }
+
+      &__button {
+        background: $base-color;
+        color: white;
+        font-family: $font;
+        border: none;
+        border-radius: 5px;
+        height: 2rem;
+        width: 6rem;
+        font-size: $p-font-size;
+      }
+      ::placeholder {
+        color: $base-color;
+        font-size: $p-font-size;
+      }
+    }
   }
 
-  &__button {
-    background: white;
+  .content-container {
+    font-size: $p-font-size;
+    max-width: 24.625rem;
+
+    &__searched-word {
+      font-size: $p-font-size;
+      text-align: center;
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    &__phonetics {
+      margin: 1em 0;
+      img {
+        width: 2.7rem;
+      }
+      .container {
+        @extend %flex-box;
+        flex-direction: row;
+        margin: 0.5rem;
+
+        .content-container__paragraph:nth-of-type(1) {
+          font-weight: bold;
+        }
+        .content-container__paragraph:nth-of-type(2) {
+          margin: 0.7em;
+        }
+      }
+    }
+
+    &__header {
+      padding: 0.5rem 0;
+    }
+    h2.content-container__header {
+      font-size: $h2-font-size;
+      padding: 0 0 0.5rem;
+      border-bottom: 1px solid $base-color;
+    }
+    h3.content-container__header {
+      font-size: $h3-font-size;
+      padding: 0.5rem 0;
+      border-bottom: dotted $base-color;
+    }
+
+    &__paragraph {
+      margin: 1em 0;
+    }
+
+    &__meanings {
+      margin: 1em 0;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &__phonetics--hidden {
+      display: none;
+    }
+  }
+
+  #error {
+    text-align: center;
+  }
+  #error > {
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.main-container--moved {
+  justify-content: flex-start;
+  margin: 1rem 2rem;
+  background: rgb(255, 255, 255);
+}
+
+//min-width in @media rule adjusted to content size
+
+@media screen and (min-width: 586px) {
+  $h1-font-size: 1.5rem;
+  $h2-font-size: $h1-font-size * 0.85;
+  $h3-font-size: $h1-font-size * 0.75;
+  $p-font-size: $h1-font-size * 0.7;
+  $max-width: 32.25rem;
+
+  .main-container {
+    .search-container {
+      h1 {
+        font-size: $h1-font-size;
+      }
+      .search-box {
+        max-width: $max-width;
+        &__input {
+          font-size: $p-font-size;
+        }
+      }
+    }
+    .content-container {
+      max-width: $max-width;
+      h2.content-container__header {
+        font-size: $h2-font-size;
+      }
+      h3.content-container__header {
+        font-size: $h3-font-size;
+      }
+      p {
+        font-size: $p-font-size;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 786px) {
+  $h1-font-size: 2rem;
+  $h2-font-size: $h1-font-size * 0.8;
+  $h3-font-size: $h1-font-size * 0.6;
+  $p-font-size: $h1-font-size * 0.5;
+  $max-width: 43.125rem;
+  .main-container {
+    .search-container {
+      h1 {
+        font-size: $h1-font-size;
+        margin: 1rem 0;
+      }
+      .search-box {
+        max-width: $max-width;
+        &__input {
+          font-size: $p-font-size;
+        }
+      }
+    }
+    .content-container {
+      max-width: $max-width;
+      h2.content-container__header {
+        font-size: $h2-font-size;
+      }
+      h3.content-container__header {
+        font-size: $h3-font-size;
+      }
+      p {
+        font-size: $p-font-size;
+      }
+    }
+  }
+  .main-container--moved {
+    justify-content: flex-start;
+    background: rgb(255, 255, 255);
   }
 }

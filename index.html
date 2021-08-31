@@ -4,19 +4,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>English dictionary browser</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      type="text/css"
+      href="lib/OverlayScrollbars.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="search-box">
-      <input
-        class="search-box__input"
-        type="text"
-        placeholder="Type a word here"
-      />
-      <button class="search-box__button">Search</button>
+    <div class="main-container">
+      <div class="search-container">
+        <header>
+          <h1>PUBLIC ENGLISH DICTIONARY BROWSER</h1>
+        </header>
+        <div class="search-box">
+          <input
+            class="search-box__input"
+            type="text"
+            placeholder="TYPE A WORD TO FIND ITS DEFINITION"
+            autocomplete="off"
+          />
+          <button class="search-box__button">SEARCH</button>
+        </div>
+      </div>
+      <div class="content-container content-container--hidden">
+        <p class="content-container__searched-word"></p>
+        <div class="content-container__phonetics">
+          <h2 class="content-container__header">Phonetics</h2>
+          <div class="container">
+            <p class="content-container__paragraph"></p>
+            <p class="content-container__paragraph">
+              Click play to listen to the pronounciation
+            </p>
+            <img
+              class="content-container__play-icon"
+              src="img/play.png"
+              alt="play icon"
+            />
+          </div>
+        </div>
+        <div class="content-container__meanings">
+          <h2 class="content-container__header">Meanings</h2>
+        </div>
+        <div class="content-container__origin">
+          <h2 class="content-container__header">Origin</h2>
+          <p class="content-container__paragraph"></p>
+        </div>
+      </div>
     </div>
-    <div class="fetched-data"></div>
-    <script src="app.js"></script>
+    <script type="text/javascript" src="lib/howler.core.min.js"></script>
+    <script type="text/javascript" src="lib/OverlayScrollbars.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
